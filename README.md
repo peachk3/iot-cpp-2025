@@ -36,10 +36,6 @@
 	[C++](./Day1/09_default3.cpp)
 <br>
 
-#### 인라인(Inline) 함수
-
-<br>
-
 #### 이름공간(namespace)
 - 대규모 프로젝트 시 함수명, 변수명 충돌을 구분하기 위함 (std namespace 사용)
 - 네임스페이스::함수();
@@ -261,6 +257,97 @@ public:
 [C++](./Day3/12_operator.cpp)
 [C++](./Day3/13_operator2.cpp)
 
+
+### 4일차
+#### Operator 
+- 연산자 오버로딩
+	객체를 리턴 [C++](./Day4/02_operator2.cpp)
+	참조를 리턴 [C++](./Day4/03_constructor.cpp)
+	-> 복사 생성자가 출력됨
+	```C++
+	클래스명 operator연산자(+, -...)(const 클래스명& 객체명) {}
+	
+	p1.operator+(p2);
+	p1 + p2;
+	p1 + p2 + p3;	
+
+	```
+- 전역함수 오버로딩
+	1. public
+		- 객체 두 개가 다 입력으로 들어와야 함
+	[C++](./Day4/06_operator5.cpp)
+	2. private
+		- 함수 원형에 friend 선언을 하면 외부에서 private 또는 protected 멤버의 접근이 허용됨
+	[C++](./Day4/07_operator6.cpp)
+	3. 단항 연산자
+		- 반환형 operator[연산자]()
+	[C++](./Day4/08_operator7.cpp)
+<br>
+
+- 오버라이딩
+
+
+#### 인라인(Inline) 함수, 매크로 함수
+- 메크로는 전처리기가 처리하지만 inline 함수는 컴파일러가 처리함
+- 매크로 함수
+[C++](./Day4/11_inline.cpp)
+- 인라인 함수
+[c++](./Day4/12_inline2.cpp)
+<br>
+
+#### 함수템플릿
+- 여러 자료형을 템플릿 인자로 받아 함수 내부에서 활용
+- 같은 함수 로직을 여러 타입에 대해 재사용할 수 있다.
+- 템플릿은 선언과 함수정의가 분리될 수 없다.
+- 다형성, 재활용
+	```C++
+	template <typename T>
+	T Add(T a, T b) {
+	return a + b;
+	}
+	```
+	[C++](./Day4/13_template.cpp)
+
+- 템플릿 특수화 
+	- 템플릿 일반화 중 특별한 타입을 처리할 경우
+	```C++
+	template <>							// 템플릿 특수화-템플릿 일반화 중 특별한 타입만 처리할 경우
+	int func<int>(int a, int b){		// 명시적으로 int 자료형으로 표현되어 있음
+		cout << "type: <int>" << endl;
+		return a + b;
+	}
+	```
+	[C++](./Day4/14_template2.cpp)
+	- 템플릿 typename이 여러 개인 경우
+		-> typename을 여러개 지정해주면 됨
+	```C++
+	template <typename T, typename T2>
+	```
+	[C++](./Day4/15_template3.cpp)
+
+<br>
+
+#### 클래스 템플릿
+
+```C++
+template <typename T>
+class CTemplate {
+private:
+T data;
+public:
+CTemplate(T d) {data = d;}
+T getData() { return data; }
+};
+```
+[C++](./Day4/16_template4.cpp)
+- 클래스 템플릿의 특수화
+	- 클래스 템플릿은 인스턴스 생성 시 반드시 typename을 작성해야 함!
+	[C++](./Day4/17_template5.cpp)
+
+- 템플릿 매개변수
+	[C++](./Day4/18_template6.cpp)
+
+### 5일차
 
 #### Part 3
 - 상속의 이해
