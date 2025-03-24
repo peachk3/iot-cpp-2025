@@ -257,6 +257,7 @@ public:
 [C++](./Day3/12_operator.cpp)
 [C++](./Day3/13_operator2.cpp)
 
+<hr>
 
 ### 4일차
 #### Operator 
@@ -347,7 +348,8 @@ T getData() { return data; }
 - 템플릿 매개변수
 	[C++](./Day4/18_template6.cpp)
 
-<br>
+<hr>
+
 
 ### 5일차
 
@@ -418,17 +420,14 @@ T getData() { return data; }
 	[C++](./Day5/15_static_cast2.cpp)
 <br>
 
+<hr>
 
 ### 6일차
 
-#### Part 3 
-- 상속의 이해
-- 상속과 다형성
+
 - 가상의 원리와 다중상속
 
-#### Part 4
-- 연산자 오버로딩
+
 - String 클래스의 디자인
-- 템플릿
 - 예외처리
 
