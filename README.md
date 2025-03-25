@@ -43,10 +43,6 @@
 - scope : 다른 클래스의 함수 불러옴
 	[scope](./Day1/scope.h)
 	[C++](./Day1/11_scope.cpp)
-
-<br>
-
-#### 새로운 자료형 bool
 <br>
 
 #### 참조자(reference)
@@ -80,6 +76,7 @@ type& 참조변수명 = 참조가 가리킬 기존 변수;
 - new는 생성자 호출이 되므로 초기화 가능
 - 생성자 - 객체를 생성하고 초기화시키는 기능
 	[C++](./Day1/12_new3.cpp)
+
 <hr>
 
 
@@ -189,11 +186,11 @@ public:
 [C++](./Day2/13_init5.cpp)
 3. 객체를 멤버로 가지는 경우
 [C++](./Day2/14_init6.cpp)
-
 <br>
 
 #### 2일차 복습
 - [C++](./Day2/Human.cpp)
+
 <hr>
 
 ### 3일차
@@ -228,6 +225,7 @@ public:
 - 입력을 한 개만 가지는 생성자
 	[C++](./Day3/04_변환생성자.cpp)
 <br>
+
 - 묵시적으로 변환하는 것을 막아줌
 	```C++
 	explicit 클래스명(){}
@@ -250,8 +248,6 @@ public:
 - 실습: BankingSystem 만들기 
 	[C++](./BankingSystem/banksystem.cpp)
 <br>
-
-#### Static
 
 #### Operator
 [C++](./Day3/12_operator.cpp)
@@ -284,9 +280,6 @@ public:
 		- 반환형 operator[연산자]()
 	[C++](./Day4/08_operator7.cpp)
 <br>
-
-- 오버라이딩
-
 
 #### 인라인(Inline) 함수, 매크로 함수
 - 메크로 - 전처리기, inline 함수 - 컴파일러가 처리함
@@ -325,7 +318,6 @@ public:
 	template <typename T, typename T2>
 	```
 	[C++](./Day4/15_template3.cpp)
-
 <br>
 
 #### 클래스 템플릿
@@ -369,7 +361,6 @@ T getData() { return data; }
 - 상속 관계에서 객체 생성 및 소멸
 - 생성자의 호출과 생성자의 실행은 다름
 	[C++](./Day5/04_inheritance4.cpp)
-
 <br>
 
 #### 객체 포인터
@@ -395,7 +386,6 @@ T getData() { return data; }
 - 파생클래스에서 재정의할 것을 약속받은 멤버 함수를 말하며 클래스의 멤버함수에 virtual 키워드를 사용하여 만든다.
 - 프로그램 실행 중 호출된 함수가 결정될 형태 -> 동적 바이딩
 	[C++](./Day5/11_virtual.cpp)
-
 <br>
 
 #### Virtual Class
@@ -407,8 +397,7 @@ T getData() { return data; }
 
 - 추상자료형을 이용해 동적 할당된 객체를 참조할 때는 메모리 해제시 참조 타입의 소멸자만 호출되어 메모리 누수가 발생
 -> 상위 클래스의 소멸자를 가상(소멸자)으로 만들어 실제타입의 소멸자 호출을 유도
-	[C++](./Day5/13_virtual3.cpp)
-
+[C++](./Day5/13_virtual3.cpp)
 <br>
 
 #### 형변환
@@ -423,11 +412,70 @@ T getData() { return data; }
 <hr>
 
 ### 6일차
+#### dynamic cast
+- 기본 클래스를 참조하는 lvalue를 파생된 클래스에 대한 참조로 변환
+- 상속관계에서 안전하게 형변환을 지원
+- 다운캐스팅 - 다형성을 위해 virtual 메서드가 꼭 있어야 함! 
+	-> 부모 클래스에 virtual(가상)함수가 없다면 다운 캐스팅 불가능
+[C++](./Day6/01_dynamic_cast.cpp)
+[C++](./Day6/02_dynamic_cast2.cpp)
+<br>
+
+#### const vast
+- const 선언을 해지
+[C++](./Day6/03_const_cast.cpp)
+[C++](./Day6/04_const_cast2.cpp)
+<br>
+
+#### reinterpret_cast
+- 포인터 -> 포인터, 포인터 -> 변수, 변수 -> 포인터로 하는 주로 포인터 관련 연산자
+[C++](./Day6/05_reinterpret.cpp)
+<br>
+
+#### temp_object
+- 임시 객체 (이름 없는 객체) -> 다음 항에서 바로 사라짐
+[C++](./Day6/06_tempobj.cpp)
+[C++](./Day6/07_tempobj1.cpp)
+[C++](./Day6/08_tempobj2.cpp)
+<br>
+
+#### 스마트 포인터
+- 객체의 생명 주기를 객체에 맡김으로 프로그래머의 메모리 관리 부담을 줄여줌
+- unique_ptr - 소유권을 독점적으로 관리하는 스마트 포인터(auto_ptr을 대체)
+[C++](./Day6/09_unique_prt.cpp)
+
+- shared_ptr - 참조 카운트를 통해 객체의 소유권을 공유한다.
+- make_shared - 객체와 참조 카운트를 하나의 메모리 블록에 같이 할당시킴
+
+- weak_ptr - 레퍼런스 카운트에 영향을 주지 않는 스마트 포인터, 순환참조를 방지한다.
+<br>
+
+#### STL(Standard Template Library)
+- container : 객체를 저장하고 관리하는 자료 구조
+- 컨테이너 종류
+	1. 시퀀스 컨테이너 - 선형적으로 데이터 저장(순서), vector, list, queue
+	2. 연관 컨테이너 - 일정한 규칙으로 저장, set, multiset, map, multimap
+	3. 컨테이너 어댑터 - 변형
+<br>
+
+#### Vector
+[C++](./STL/01_vector.cpp)
+
+- push_back(n) - 마지막 원소 뒤에 n을 추가한다.
+- v.insert(idx, val): idx번째 위치에 val을 넣는다.
+- v.capacity(): 벡터에 할당된 메모리 크기를 리턴한다.
+- v.pop_back(): 맨 마지막에 있는 원소 제거
+- v.erase(): 찾는 원소를 제거
+- v.front(): 첫 번째 원소를 리턴
+- v.back(): 마지막 원소를 리턴
+- iterator 타입 : iterator, begin(), end()
 
 
-- 가상의 원리와 다중상속
+#### iterator
+- vector<int>::iterator iter : 순방향 반복자 선언!
+but, 이것을 생략하고 auto로 선언해도 사용 가능
 
-
-- String 클래스의 디자인
-- 예외처리
-
+- vector<int>::reverse_iterator rit : 역방향 반복자 선언 
+but, 이것을 생략하고 auto로 선언해도 사용 가능
+	- rbegin()은 마지막 주소, rend()은 처음 원소의 이전 주소
+	
